@@ -5,9 +5,7 @@ from typing import Any, Dict
 logger = logging.getLogger(__name__)
 
 class LLMQueryGenerator:
-    """
-    Uses OpenAI's API to generate SQL queries based on user input and database schema.
-    """
+    
     def __init__(self, api_key: str):
         openai.api_key = api_key
         self.api_key = api_key
