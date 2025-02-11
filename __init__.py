@@ -72,6 +72,17 @@ class CogniDB:
                 "error": str(e)
             }
     
+    def close(self):
+        """Close the database connection."""
+        if hasattr(self, 'db_driver') and self.db_driver.conn is not None:
+            self.db_driver.conn.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+
     def __del__(self):
         """Cleanup connection on deletion"""
         if hasattr(self, 'db_driver'):
